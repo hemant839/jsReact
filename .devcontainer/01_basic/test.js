@@ -14,15 +14,24 @@
 // const hundreds = 10000000
 // console.log(hundreds.toLocaleString('en-IN'));
 
- console.log(Math.random());
+/* console.log(Math.random());
  console.log((Math.random()*10) +1);
  console.log(Math.floor(Math.random()*10) +1);
 
  const min = 10
  const max = 20
- console.log(Math.floor(Math.random() * (max - min + 1)) + min);
- 
- 
+ console.log(Math.floor(Math.random() * (max - min + 1)) + min); */
+
+//++++++++++++++++++++++++++++++++++++ DATE +++++++++++++++
+
+let myDate = new Date();
+console.log(myDate.toDateString());
+
+let newDate = new Date();
+console.log(newDate.getDate());
+console.log(newDate.getDay());
+
+
  
  
 
