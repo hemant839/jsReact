@@ -47,14 +47,14 @@ const month = 3;
 //     console.log(char);
 // }
 
-const map = new Map();
-map.set("IN", "India");
-map.set("US", "United States");
-map.set("UK", "United Kingdom");
+// const map = new Map();
+// map.set("IN", "India");
+// map.set("US", "United States");
+// map.set("UK", "United Kingdom");
 
-for (const [key, value] of map) {
-    console.log(key, ":-", value);
-}
+// for (const [key, value] of map) {
+//     console.log(key, ":-", value);
+// }
 
 const myObject = {
     "game": "Football",
@@ -62,6 +62,10 @@ const myObject = {
     "team": "PSG"
 }
 
-for (const [key, value] of Object.entries(myObject)) {
-    console.log(key, ":-", value);
+// for (const [key, value] of Object.entries(myObject)) {
+//     console.log(key, ":-", value);
+// }
+
+for (const key in myObject) {
+    console.log(key, ":-", myObject[key]);   
 }
