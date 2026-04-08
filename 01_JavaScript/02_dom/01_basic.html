@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: #fff; font-family: Arial, sans-serif;">
+    <div class="parent">
+        <h1>Days of the Week</h1>
+        <div class="days">Monday</div>
+        <div class="days">Tuesday</div>
+        <div class="days">Wednesday</div>
+        <div class="days">Thursday</div>
+        <div class="days">Friday</div>
+        <div class="days">Saturday</div>
+        <div class="days">Sunday</div>
+    </div>
+
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    // Get the parent element
+    const parent = document.querySelector('.parent');
+    // console.log(parent);
+    // console.log(parent.children);
+    // console.log(parent.children[1].innerHTML);
+
+    for (let i = 0; i < parent.children.length; i++) {
+        parent.children[2].style.color = 'cyan';
+        parent.children[3].style.color = 'green';
+        // console.log(parent.children[i].innerHTML);
+    }
+    // console.log(parent.childNode);
+
+    const div = document.createElement('div');
+    div.className = 'new-div';
+    div.id = 'myId';
+    div.textContent = 'This is a new div element';
+    div.style.color = 'yellow'; 
+    div.style.fontSize = '20px';
+    div.style.backgroundColor = '#333';
+    div.style.padding = '10px';
+    parent.appendChild(div);
+    console.log(div);
+    
+    function addLanguage(langName) {
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li);
+    }
+
+    addLanguage('Python');
+    addLanguage('Java');
+
+    function addOptimusedlang(langName) {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));  
+        document.querySelector('.language').appendChild(li);
+    }
+
+    addOptimusedlang('C++');
+    addOptimusedlang('Ruby');
+
+    //Edit an element
+    const firstLang = document.querySelector('.language li');
+    firstLang.textContent = 'TypeScript';   
+
+    const secondLang = document.querySelector('.language li:nth-child(2)'); 
+    secondLang.textContent = 'Go';
+
+    //Remove an element
+    const thirdLang = document.querySelector('.language li:last-child');
+    thirdLang.remove();
+</script>
+</html>

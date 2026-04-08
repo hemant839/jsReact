@@ -2,10 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DOM Manipulation Learning</title>
 </head>
 <body>
-    
+    <h1 id="main-heading" class="title">Hello, World!</h1>
+    <h2>Welcome to DOM Manipulation</h2>
+    <h2>Learn how to manipulate the DOM with JavaScript</h2>
+    <p class="description">This is a simple DOM manipulation example.</p>
+    <button id="change-text-btn">Change Text</button>
+    <div class="container">
+        <h1>Container Heading</h1>
+        <p>Another paragraph inside a container.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+            Quia unde eaque perspiciatis quo iste enim eligendi, consectetur rem veritatis 
+            eveniet! Fuga nesciunt, quo velit ad, blanditiis laborum provident necessitatibus 
+            accusantium nemo aliquid corrupti autem repudiandae delectus ullam ut ea dicta, 
+            tempora excepturi odit quos eos minima sunt eveniet voluptatum. Odio!</p>
+
+        <ul>
+            <li class="text">Item 1 mango</li>
+            <li class="text">Item 2 banana</li>
+            <li class="text">Item 3 orange</li>
+            <li class="text">Item 4 apple</li>
+            <li class="text">Item 5 grapes</li>
+        </ul>
+    </div>
+
+    <script>
+        // Get the button element
+        const button = document.getElementById('change-text-btn');
+
+        // Add a click event listener to the button
+        button.addEventListener('click', function() {
+            // Get the heading element
+            const heading = document.getElementById('main-heading');
+            // Change the text content of the heading
+            heading.textContent = 'Text Changed!';
+        });
+    </script>
 </body>
 </html>
