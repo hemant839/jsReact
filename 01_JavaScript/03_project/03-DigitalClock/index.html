@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Time</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        #clock {
+            font-size: 80px;
+            color: #fff;
+            font-weight: bold;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            animation: glow 2s ease-in-out infinite;
+            font-family: 'Courier New', monospace;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .time-units {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .unit {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .unit:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .unit-value {
+            font-size: 36px;
+            color: #fff;
+            font-weight: bold;
+            display: block;
+        }
+
+        .unit-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        .am-pm {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px;
+            }
+
+            #clock {
+                font-size: 60px;
+                letter-spacing: 2px;
+            }
+
+            .time-units {
+                gap: 15px;
+                margin-top: 30px;
+            }
+
+            .unit {
+                padding: 15px 20px;
+            }
+
+            .unit-value {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px;
+            }
+
+            #clock {
+                font-size: 48px;
+                letter-spacing: 1px;
+            }
+
+            .time-units {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .unit {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Digital Clock</h1>
+        <div id="clock">Loading...</div>
+        
+        <div class="time-units">
+            <div class="unit">
+                <span class="unit-value" id="hours">00</span>
+                <span class="unit-label">Hours</span>
+            </div>
+            <div class="unit">
+                <span class="unit-value" id="minutes">00</span>
+                <span class="unit-label">Minutes</span>
+            </div>
+            <div class="unit">
+                <span class="unit-value" id="seconds">00</span>
+                <span class="unit-label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="am-pm" id="ampm">AM</div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours12 = now.getHours() % 12 || 12;
+            const hours24 = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+            
+            const timeString = `${hours24}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = timeString;
+            document.getElementById('hours').textContent = String(hours24).padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+            document.getElementById('ampm').textContent = ampm;
+        }
+        
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call to display time immediately
+    </script>   
+</body>
+</html>
